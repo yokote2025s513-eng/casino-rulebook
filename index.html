@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>カジノゲームルールブック</title>
+
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+
+  --color-background-primary: #1B140B;
+  --color-background-secondary: #2A2012;
+
+  --color-text-primary: #F5ECD7;
+  --color-text-secondary: #C7B48A;
+
+  --color-border-tertiary: rgba(212,160,23,0.18);
+
+  --color-background-success: rgba(40,167,69,0.12);
+  --color-text-success: #7DFF9A;
+
+  --color-background-info: rgba(13,110,253,0.10);
+  --color-text-info: #9CC7FF;
+
+  --color-border-info: rgba(13,110,253,0.25);
+
+  --border-radius-md: 14px;
+}
+
+body {
+  font-family: 'Noto Serif JP', serif;
+  background:
+    radial-gradient(circle at top, #2B2110, #120D07);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.rulebook {
+  max-width: 780px;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 12px 40px rgba(0,0,0,0.45);
+}
+
+.nav-tabs {
+  display: flex;
+  border-bottom: 2px solid #8B6914;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 14px 8px;
+  background: var(--color-background-secondary);
+  border: none;
+  cursor: pointer;
+
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 600;
+
+  color: var(--color-text-secondary);
+
+  letter-spacing: 0.05em;
+
+  transition: 0.2s;
+
+  border-top: 3px solid transparent;
+}
+
+.tab-btn:hover {
+  background: var(--color-background-primary);
+  color: #D4A017;
+}
+
+.tab-btn.active {
+  background: var(--color-background-primary);
+  color: #D4A017;
+  border-top: 3px solid #D4A017;
+}
+
+.tab-icon {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+  animation: fade 0.25s ease;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.game-header {
+  position: relative;
+  overflow: hidden;
+
+  padding: 2rem 2rem 1.5rem;
+
+  background: var(--color-background-primary);
+
+  border-bottom: 1px solid var(--color-border-tertiary);
+}
+
+.game-header::before {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #8B6914,
+      #D4A017,
+      #8B6914
+    );
+}
+
+.game-title {
+  font-family: 'Cinzel', serif;
+  font-size: 30px;
+  font-weight: 700;
+
+  color: #D4A017;
+
+  letter-spacing: 0.05em;
+
+  margin-bottom: 8px;
+}
+
+.game-subtitle {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  font-weight: 300;
+}
+
+.badge-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  margin-top: 14px;
+}
+
+.badge {
+  padding: 4px 11px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 0.03em;
+}
+
+.badge-gold {
+  background: #FFF3CD;
+  color: #856404;
+  border: 1px solid #D4A017;
+}
+
+.badge-green {
+  background: var(--color-background-success);
+  color: var(--color-text-success);
+}
+
+.badge-blue {
+  background: var(--color-background-info);
+  color: var(--color-text-info);
+}
+
+.content-area {
+  padding: 0 2rem 2rem;
+  background: var(--color-background-primary);
+}
+
+.section {
+  margin-top: 1.6rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+
+  border-bottom: 1px solid #8B6914;
+
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #D4A017;
+}
+
+.rule-card {
+  background: var(--color-background-secondary);
+
+  border: 1px solid var(--color-border-tertiary);
+
+  border-radius: var(--border-radius-md);
+
+  padding: 1rem 1.25rem;
+
+  margin-bottom: 10px;
+}
+
+.rule-card p {
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.step-list {
+  list-style: none;
+  counter-reset: step;
+}
+
+.step-list li {
+  counter-increment: step;
+
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+
+  padding: 10px 0;
+
+  border-bottom: 1px solid var(--color-border-tertiary);
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.step-list li:last-child {
+  border-bottom: none;
+}
+
+.step-num {
+  width: 24px;
+  height: 24px;
+
+  border-radius: 50%;
+
+  background: #8B6914;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  margin-top: 2px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  font-family: 'Cinzel', serif;
+}
+
+.payout-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  font-size: 13px;
+
+  overflow: hidden;
+
+  border-radius: var(--border-radius-md);
+}
+
+.payout-table th {
+  background: #8B6914;
+  color: white;
+
+  padding: 10px 12px;
+
+  text-align: left;
+
+  font-size: 11px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+}
+
+.payout-table td {
+  padding: 10px 12px;
+
+  border-bottom: 1px solid var(--color-border-tertiary);
+}
+
+.payout-table tr:nth-child(even) td {
+  background: var(--color-background-secondary);
+}
+
+.hand-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.hand-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  padding: 12px;
+
+  background: var(--color-background-secondary);
+
+  border: 1px solid var(--color-border-tertiary);
+
+  border-radius: var(--border-radius-md);
+
+  transition: 0.2s;
+}
+
+.hand-item:hover {
+  transform: translateY(-2px);
+  border-color: #D4A017;
+}
+
+.hand-rank {
+  min-width: 22px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  color: #D4A017;
+
+  text-align: center;
+
+  font-family: 'Cinzel', serif;
+}
+
+.hand-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hand-desc {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.highlight-box {
+  margin-top: 12px;
+
+  padding: 14px 16px;
+
+  background: #FFF4D9;
+
+  border: 1px solid #D4A017;
+
+  border-radius: var(--border-radius-md);
+}
+
+.highlight-box p {
+  color: #5E4300;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.tip-box {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+
+  margin-top: 12px;
+
+  padding: 12px 14px;
+
+  background: var(--color-background-info);
+
+  border: 1px solid var(--color-border-info);
+
+  border-radius: var(--border-radius-md);
+}
+
+.tip-box p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--color-text-info);
+}
+
+@media (max-width: 640px) {
+
+  body {
+    padding: 1rem;
+  }
+
+  .nav-tabs {
+    flex-direction: column;
+  }
+
+  .content-area,
+  .game-header {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .game-title {
+    font-size: 22px;
+  }
+
+  .hand-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+
+<div class="rulebook">
+
+<div class="nav-tabs">
+
+  <button class="tab-btn active"
+    onclick="showTab('bj', this)">
+    <span class="tab-icon">🃏</span>
+    ブラックジャック
+  </button>
+
+  <button class="tab-btn"
+    onclick="showTab('chin', this)">
+    <span class="tab-icon">🎲</span>
+    チンチロ
+  </button>
+
+  <button class="tab-btn"
+    onclick="showTab('poker', this)">
+    <span class="tab-icon">♠️</span>
+    ポーカー
+  </button>
+
+</div>
+
+<!-- ブラックジャック -->
+<div class="panel active" id="panel-bj">
+
+  <div class="game-header">
+
+    <div class="game-title">
+      BLACKJACK
+    </div>
+
+    <div class="game-subtitle">
+      21を目指せ — ディーラーに勝つ最も有名なカードゲーム
+    </div>
+
+    <div class="badge-row">
+      <span class="badge badge-gold">2〜8人</span>
+      <span class="badge badge-green">難易度：やさしい</span>
+      <span class="badge badge-blue">標準デッキ 1〜6組</span>
+    </div>
+
+  </div>
+
+  <div class="content-area">
+
+    <div class="section">
+
+      <div class="section-title">
+        <i class="ti ti-target"></i>
+        目的
+      </div>
+
+      <div class="rule-card">
+        <p>
+          手札の合計を<strong>21以下</strong>に保ちながら、
+          ディーラーの合計よりも高くする。
+          21を超えると（バスト）即負け。
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- チンチロ -->
+<div class="panel" id="panel-chin">
+
+  <div class="game-header">
+
+    <div class="game-title">
+      チンチロリン
+    </div>
+
+    <div class="game-subtitle">
+      サイコロ3個で勝負を決める日本の伝統ゲーム
+    </div>
+
+    <div class="badge-row">
+      <span class="badge badge-gold">2〜10人以上</span>
+      <span class="badge badge-green">難易度：ふつう</span>
+      <span class="badge badge-blue">サイコロ3個</span>
+    </div>
+
+  </div>
+
+  <div class="content-area">
+
+    <div class="section">
+
+      <div class="section-title">
+        <i class="ti ti-dice"></i>
+        役一覧
+      </div>
+
+      <table class="payout-table">
+
+        <thead>
+          <tr>
+            <th>役</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>ピンゾロ</td>
+            <td>1-1-1</td>
+          </tr>
+
+          <tr>
+            <td>シゴロ</td>
+            <td>4-5-6</td>
+          </tr>
+
+          <tr>
+            <td>ヒフミ</td>
+            <td>1-2-3</td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ポーカー -->
+<div class="panel" id="panel-poker">
+
+  <div class="game-header">
+
+    <div class="game-title">
+      TEXAS HOLD'EM
+    </div>
+
+    <div class="game-subtitle">
+      世界で最も人気のポーカー
+    </div>
+
+    <div class="badge-row">
+      <span class="badge badge-gold">2〜9人</span>
+      <span class="badge badge-green">難易度：むずかしい</span>
+      <span class="badge badge-blue">標準デッキ1組</span>
+    </div>
+
+  </div>
+
+  <div class="content-area">
+
+    <div class="section">
+
+      <div class="section-title">
+        <i class="ti ti-cards"></i>
+        役一覧
+      </div>
+
+      <div class="hand-grid">
+
+        <div class="hand-item">
+          <div class="hand-rank">1</div>
+          <div>
+            <div class="hand-name">
+              ロイヤルフラッシュ
+            </div>
+            <div class="hand-desc">
+              A K Q J 10 同スート
+            </div>
+          </div>
+        </div>
+
+        <div class="hand-item">
+          <div class="hand-rank">2</div>
+          <div>
+            <div class="hand-name">
+              ストレートフラッシュ
+            </div>
+            <div class="hand-desc">
+              連続5枚 同スート
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<script>
+
+function showTab(id, btn) {
+
+  document
+    .querySelectorAll('.panel')
+    .forEach(p => p.classList.remove('active'));
+
+  document
+    .querySelectorAll('.tab-btn')
+    .forEach(b => b.classList.remove('active'));
+
+  document
+    .getElementById('panel-' + id)
+    .classList.add('active');
+
+  btn.classList.add('active');
+}
+
+</script>
+
+</body>
+</html>
